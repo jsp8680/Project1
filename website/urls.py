@@ -24,7 +24,6 @@ from django.urls import include, path
 urlpatterns = [
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
-    # path("accounts/", include("django.contrib.auth.urls")),
 ] + debug_toolbar_urls()
 
 # Fix: remove debug_toolbar_urls() from urlpatterns
