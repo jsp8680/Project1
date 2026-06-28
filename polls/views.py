@@ -1,13 +1,14 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 # Create your views here.
 from django.urls import reverse
 from django.db.models import F
 from django.views import generic
 from .models import Question, Choice
-
-
+# A09 Fix: import logging
+# A09 Fix: logger = logging.getLogger(__name__)
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
@@ -50,7 +51,9 @@ class ResultsView(generic.DetailView):
 
 
 
+@login_required
 def vote(request, question_id):
+    
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
@@ -70,5 +73,7 @@ def vote(request, question_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
+        # logger.info(f"User {request.user} voted on question {question_id}, choice {selected_choice.id}")
+
 
     return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
