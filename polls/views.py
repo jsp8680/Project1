@@ -50,8 +50,8 @@ class ResultsView(generic.DetailView):
 #     return render(request, "polls/results.html", {"question": question})
 
 
-
-@login_required
+# Flaw 4: Add @login_required to require login to vote
+# @login_required
 def vote(request, question_id):
     
     question = get_object_or_404(Question, pk=question_id)
