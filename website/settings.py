@@ -62,7 +62,7 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 # Flaw 2 Fix: Comment out debug_toolbar.middleware.DebugToolbarMiddleware
-# Flaw 4 Fix: uncomment 'django.middleware.csrf.CsrfViewMiddleware'
+# Flaw 3 Fix: uncomment 'django.middleware.csrf.CsrfViewMiddleware'
 
 ROOT_URLCONF = "website.urls"
 
