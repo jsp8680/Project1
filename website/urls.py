@@ -26,4 +26,4 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 ] + debug_toolbar_urls()
 
-# Fix: remove debug_toolbar_urls() from urlpatterns
+# Fix 2: remove debug_toolbar_urls() from urlpatterns
